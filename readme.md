@@ -59,6 +59,12 @@ Endpoint: `{{url}}/api/v1/users`
 
 Access a comprehensive list of all users through this endpoint, mandating Bearer Token authorization.
 
+### GET - Get All Users By Parameters (Paginate)
+
+Endpoint: `{{url}}/api/v1/users?page=1&limit=5`
+
+Access a comprehensive list of all users through this endpoint, mandating Bearer Token authorization. The users' data can be paginated with the below accepted parameters
+
 ### POST - Signup
 
 Endpoint: `{{url}}/api/v1/users/signup`

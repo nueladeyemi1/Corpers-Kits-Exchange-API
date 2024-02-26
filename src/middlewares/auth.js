@@ -17,7 +17,7 @@ exports.auth = async (req, res, next) => {
     })
 
     if (!user) {
-      throw new Error('Password or Email not correct')
+      throw new Error('Please login or register to have access')
     }
 
     req.user = user

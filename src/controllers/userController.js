@@ -3,6 +3,7 @@ const bcrypt = require('bcrypt')
 const crypto = require('crypto')
 const jwt = require('jsonwebtoken')
 const { sendEmail } = require('../utils/email')
+const paginate = require('../utils/pagination')
 require('dotenv').config()
 
 exports.signup = async (req, res) => {
@@ -175,7 +176,11 @@ exports.deleteAccount = async (req, res) => {
 
 exports.getUsers = async (req, res) => {
   try {
-    const users = await User.find({}).select('-password')
+    const { limit, skip } = paginate(req.query)
+    const users = await User.find({})
+      .select('-password')
+      .skip(skip)
+      .limit(limit)
 
     res.status(200).json({
       status: 'success',
