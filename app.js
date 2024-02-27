@@ -17,7 +17,12 @@ const userRoutes = require('./src/routes/userRoutes')
 require('dotenv').config()
 require('./DB.js')
 
+process.on('uncaughtException', () => {
+  process.exit(1)
+})
+
 // Cross platform API access
+
 app.use(cors())
 app.use('*', cors())
 
@@ -71,6 +76,25 @@ io.on('connection', () => {
   console.log('Socket.io is connected')
 })
 
-http.listen(PORT, () => {
+const server = http.listen(PORT, () => {
   console.log(`Listening to ${PORT}`)
+})
+
+const sigs = ['SIGINT', 'SIGTERM', 'SIGQUIT']
+
+sigs.forEach((element) => {
+  process.on(element, (err) => {
+    console.log(err.message)
+    server.close(() => {
+      console.log('Process is stopped')
+    })
+  })
+})
+
+process.on('unhandledException', (err) => {
+  console.log(err.message)
+
+  server.close(() => {
+    process.exit(1)
+  })
 })

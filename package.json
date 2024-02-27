@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.js"
+    "dev": "nodemon app.js",
+    "cluster": "pm2 start app.js -i max",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix dev"
   },
   "keywords": [],
   "author": "Emmanuel Adeyemi",
@@ -28,6 +30,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.10",
     "nodemon": "^3.0.3",
+    "pm2": "^5.3.1",
     "socket.io": "^4.7.4",
     "validator": "^13.11.0",
     "xss-clean": "^0.1.4"
