@@ -1,7 +1,9 @@
-const Item = require('../models/Item')
+// const Item = require('../models/Item.ts')
+import Item, { ItemsDocument } from '..models/Item'
 const multer = require('multer')
 
 // RETURNING BUFFER
+
 // const multerstorage = multer.memoryStorage()
 
 // HANDLING FILE
