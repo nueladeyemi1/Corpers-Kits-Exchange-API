@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon app.ts",
-    "cluster": "pm2 start app.ts -i max",
+    "dev": "nodemon app.js",
+    "cluster": "pm2 start app.js -i max",
     "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix dev"
   },
   "keywords": [],

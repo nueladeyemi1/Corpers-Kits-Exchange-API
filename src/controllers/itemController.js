@@ -1,5 +1,4 @@
-// const Item = require('../models/Item.ts')
-import Item, { ItemsDocument } from '..models/Item'
+const Item = require('../models/Item')
 const multer = require('multer')
 
 // RETURNING BUFFER
